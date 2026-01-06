@@ -1,4 +1,4 @@
-The problem:
+#The problem:#
 
 Given a set of Illumina RNA-Seq data of A. thaliana,
 
@@ -7,3 +7,4 @@ Given a set of Illumina RNA-Seq data of A. thaliana,
 2) Perform UMAP analysis and clustering.
 
 3) Report any interesting findings.
+

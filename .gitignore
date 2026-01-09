@@ -1,1 +1,14 @@
 *.fastq
+*.Rmd
+*.gz
+*.out
+*.sam
+*.bam
+*.tab
+.DS_Store
+_STARgenome/
+cellbarcode_whitelist/
+gene_annotation/
+genome_indices/
+reference_genome/
+snRNA-Seq_reads/

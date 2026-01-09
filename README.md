@@ -48,18 +48,20 @@ Notably, the `--sjdbGTFtagExonParentTranscript Parent` is necessary here due to 
 
 While trying to map, I kept encountering a fatal error with the bioconda version of STAR. I had to recompile a newer [alpha version](https://github.com/dobinlab/STAR_pre_releases/releases/tag/2.7.11b_alpha_2024-02-09) and then modify the source makefile to get this working, [as suggested by a fellow researcher on GitHub](https://github.com/alexdobin/STAR/issues/2142).
 
-`$ STAR \`  
-`--runThreadN 8 \`  
-`--runMode alignReads \`  
-`--genomeDir /Users/evan/bioinfo/ToriiLab-SCAnalysis/genome_indices/ \`  
-`--readFilesIn /Users/evan/bioinfo/ToriiLab-SCAnalysis/snRNA-Seq_reads/SRR34735789_2.fastq /Users/evan/bioinfo/ToriiLab-SCAnalysis/snRNA-Seq_reads/SRR34735789_1.fastq \`  
-`--sjdbGTFfile /Users/evan/bioinfo/ToriiLab-SCAnalysis/gene_annotation/Arabidopsis_thaliana.TAIR10.62.gff3 \`  
-`--sjdbGTFtagExonParentTranscript Parent \`  
-`--soloUMIlen 12 \`  
-`--soloType CB_UMI_Simple \`  
-`--soloCBwhitelist /Users/evan/bioinfo/ToriiLab-SCAnalysis/cellbarcode_whitelist/3M-february-2018_TRU.txt \`  
-`--soloFeatures GeneFull`  
 
+```
+$ STAR \
+--runThreadN 8 \
+--runMode alignReads \
+--genomeDir /Users/evan/bioinfo/ToriiLab-SCAnalysis/genome_indices/ \
+--readFilesIn /Users/evan/bioinfo/ToriiLab-SCAnalysis/snRNA-Seq_reads/SRR34735789_2.fastq /Users/evan/bioinfo/ToriiLab-SCAnalysis/snRNA-Seq_reads/SRR34735789_1.fastq \
+--sjdbGTFfile /Users/evan/bioinfo/ToriiLab-SCAnalysis/gene_annotation/Arabidopsis_thaliana.TAIR10.62.gff3 \
+--sjdbGTFtagExonParentTranscript Parent \
+--soloUMIlen 12 \
+--soloType CB_UMI_Simple \
+--soloCBwhitelist /Users/evan/bioinfo/ToriiLab-SCAnalysis/cellbarcode_whitelist/3M-february-2018_TRU.txt \
+--soloFeatures GeneFull
+```
 
 
 

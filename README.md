@@ -32,14 +32,16 @@ Although CellRanger is a first-party and perfectly suitable option for mapping a
 
 
 #### Genome Index Generation:
-`$ STAR \`
-`--runThreadN 8 \`
-`--runMode genomeGenerate \`
-`--genomeDir /Users/evan/bioinfo/ToriiLab-SCAnalysis/genome_indices/ \`
-`--genomeFastaFiles /Users/evan/bioinfo/ToriiLab-SCAnalysis/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa \`
-`--sjdbGTFfile /Users/evan/bioinfo/ToriiLab-SCAnalysis/gene_annotation/Arabidopsis_thaliana.TAIR10.62.gff3 \`
-`--sjdbGTFtagExonParentTranscript Parent \`
-`--genomeSAindexNbases 12`
+```
+$ STAR \
+--runThreadN 8 \
+--runMode genomeGenerate \
+--genomeDir /Users/evan/bioinfo/ToriiLab-SCAnalysis/genome_indices/ \
+--genomeFastaFiles /Users/evan/bioinfo/ToriiLab-SCAnalysis/reference_genome/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa \
+--sjdbGTFfile /Users/evan/bioinfo/ToriiLab-SCAnalysis/gene_annotation/Arabidopsis_thaliana.TAIR10.62.gff3 \
+--sjdbGTFtagExonParentTranscript Parent \
+--genomeSAindexNbases 12
+```
 
 Notably, the `--sjdbGTFtagExonParentTranscript Parent` is necessary here due to the gene annotation file's `.gff3` format. Additionally, `--genomeSAindexNbases` had to be scaled down from the default value of 14 to 12 due to the relatively small genome size. After successful genome index generation, we can proceed with mapping/alignment.
 
@@ -64,18 +66,11 @@ $ STAR \
 ```
 
 
-
-
-
-
-
-
-
 Notably, Read_1 contains barcode sequences and Read_2 contains the cDNA sequences. The additional parameters `--soloUMIlen 12`, `--soloType CB_UMI_Simple`, `--soloCBwhitelist /Users/evan/bioinfo/ToriiLab-SCAnalysis/cellbarcode_whitelist/3M-february-2018_TRU.txt`, and `--soloFeatures GeneFull` were chosen based on [this guide](https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md) for running STARsolo on snRNA-Seq 10X Chromium V3 data.
 
 ##### Current Issue
 
-The "features.tsv" file is persistently blank after succesful mapping runs, likely indicating an issue with the `.gff3` annotation file. Presently working on a conversion/formatting script before proceeding with downstream visualization via Seurat.
+The "features.tsv" file is persistently blank after succesful mapping runs, likely indicating an issue with the `.gff3` annotation file. Presently working on a conversion/formatting script before proceeding with downstream visualization via Seurat. NB: `--sjdbGTFtagExonParentTranscript Parent` will need to be removed from above codeblocks after conversion to `.gtf`.
 
 <!-- Additional filtering parameters were chosen from [this STARsolo publication](https://www.biorxiv.org/content/10.1101/2021.05.05.442755v1.full.pdf) in an effort to most closely mirror CellRanger's filtering behavior within STAR. Namely, `` -->
 
